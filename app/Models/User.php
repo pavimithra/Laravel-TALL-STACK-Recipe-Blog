@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'socialite_id',
+        'socialite_provider',
     ];
 
     /**

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\SocialiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -21,6 +22,13 @@ Route::middleware('guest')->group(function () {
                 ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+    //Socialite Login //
+    Route::get('auth/{provider}/redirect', [SocialiteController::class, 'login'])
+        ->name('socialite.auth');
+ 
+    Route::get('auth/{provider}/callback', [SocialiteController::class, 'callback'])
+        ->name('socialite.callback');
 
     // Admin Login //
     Route::prefix('admin')->name('admin.')->group(function () {
