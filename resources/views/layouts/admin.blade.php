@@ -5,19 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Admin Laravel') }}</title>
+        <title>{{ $title ?? 'Laravel' }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/admin.css', 'resources/js/app.js'])
+
+        
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
     </head>
     <body class="h-full font-poppins bg-gray-50 dark:bg-gray-900">
         <div x-data="{ open: false }">
             <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-            <div :class="{'block': open, 'hidden': ! open}" class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
+            <div x-cloak :class="{'block': open, 'hidden': ! open}" class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
                 <!-- Off-canvas menu backdrop, show/hide based on off-canvas menu state. -->
                 <div class="fixed inset-0 bg-gray-900/80 dark:bg-gray-500"></div>
 
@@ -75,7 +80,7 @@
                                                 clip-rule="evenodd" />
                                         </svg>
                                     </div>
-                                    <input type="search" name="search" id="search" class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 dark:focus:ring-gray-800 sm:text-sm sm:leading-6" placeholder="Search...">
+                                    <input type="search" name="search" id="search" class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-white/5 dark:text-white dark:ring-white/10 dark:focus:ring-indigo-500" placeholder="Search...">
                                 </div>
                             </form>
                         </div>
@@ -119,8 +124,8 @@
                             <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true"></div>
 
                             <!-- Profile dropdown -->
-                            <div x-data="{ user: false }" class="relative">
-                                <button @click="user = ! user" type="button" class="-m-1.5 flex items-center p-1.5" id="user-menu-button"
+                            <div x-data="{ dropdown: false }" @click.outside="dropdown = false" @close.stop="dropdown = false" class="relative">
+                                <button @click="dropdown = ! dropdown" type="button" class="-m-1.5 flex items-center p-1.5" id="user-menu-button"
                                     aria-expanded="false" aria-haspopup="true">
                                     <span class="sr-only">Open user menu</span>
                                     <img class="h-8 w-8 rounded-full bg-gray-50 dark:bg-gray-900" src="{{ asset('images/avatar/'.(Auth::user()->avatar ? Auth::user()->avatar : 'no-image.jpg')) }}" alt="">
@@ -136,7 +141,7 @@
                                 </button>
 
                                 <!-- Dropdown menu, show/hide based on menu state. -->
-                                <div :class="{'block': user, 'hidden': ! user}" class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                                <div :class="{'block': dropdown, 'hidden': ! dropdown}" class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
                                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                     <!-- Active: "bg-gray-50", Not Active: "" -->
                                     <!-- <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900" role="menuitem"
@@ -158,11 +163,11 @@
                 <main>
                     @props(['heading'])
                     @if (isset($header))
-                        <header class="text-2xl text-gray-900 dark:text-white font-merry bg-gray-200 dark:bg-gray-800 p-4 uppercase">
+                        <header class="text-2xl text-gray-900 dark:text-white font-merry bg-gray-200 dark:bg-gray-800 px-4 py-4 xl:px-8 uppercase">
                             {{ $header }}
                         </header>
                     @endif
-                    <div class="py-10 px-4 sm:px-6 lg:px-8">
+                    <div class="py-6 px-4 sm:px-6 lg:px-8">
                         {{ $slot }}
                     </div>
                 </main>

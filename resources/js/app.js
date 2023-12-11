@@ -1,8 +1,8 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
+//import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
+//window.Alpine = Alpine;
 
 document.addEventListener('alpine:init', () => {
     Alpine.store('darkMode', {
@@ -26,4 +26,8 @@ document.addEventListener('alpine:init', () => {
     })
 })
 
-Alpine.start();
+Alpine.magic('clipboard', () => {
+    return subject => navigator.clipboard.writeText(subject)
+})
+
+//Alpine.start();

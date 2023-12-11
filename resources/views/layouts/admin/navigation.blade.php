@@ -19,7 +19,7 @@
                         </x-admin.links.nav>
                     </li>
                     <li>
-                        <x-admin.links.nav :href="route('admin.dashboard')" :active="request()->routeIs('admin')">
+                        <x-admin.links.nav :href="route('admin.users')" :active="request()->routeIs('admin.users')" wire:navigate>
                             <svg class="h-6 w-6 shrink-0" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,7 +29,7 @@
                         </x-admin.links.nav>
                     </li>
                     <li>
-                        <x-admin.links.nav :href="route('admin.dashboard')" :active="request()->routeIs('admin')">
+                        <x-admin.links.nav :href="route('admin.roles')" :active="request()->routeIs('admin.roles')" wire:navigate>
                             <svg class="h-6 w-6 shrink-0" fill="none" 
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" 
@@ -39,7 +39,7 @@
                         </x-admin.links.nav>
                     </li>
                     <li>
-                        <x-admin.links.nav :href="route('admin.dashboard')" :active="request()->routeIs('admin')">
+                        <x-admin.links.nav :href="route('admin.permissions')" :active="request()->routeIs('admin.permissions')" wire:navigate>
                             <svg class="h-6 w-6 shrink-0" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" 
@@ -49,7 +49,7 @@
                         </x-admin.links.nav>
                     </li>
                     <li>
-                        <x-admin.links.nav :href="route('admin.dashboard')" :active="request()->routeIs('admin')">
+                        <x-admin.links.nav :href="route('admin.categories')" :active="request()->routeIs('admin.categories')">
                             <svg class="h-6 w-6 shrink-0" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" 
@@ -59,7 +59,7 @@
                         </x-admin.links.nav>
                     </li>
                     <li>
-                        <x-admin.links.nav :href="route('admin.dashboard')" :active="request()->routeIs('admin')">
+                        <x-admin.links.nav :href="route('admin.posts')" :active="request()->routeIs('admin.posts')">
                             <svg class="h-6 w-6 shrink-0" fill="none"
                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" 
@@ -78,20 +78,6 @@
                             <span
                                 class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">D</span>
                             <span class="truncate">Daily</span>
-                        </x-admin.links.nav>
-                    </li>
-                    <li>
-                        <x-admin.links.nav :href="route('admin.dashboard')" :active="request()->routeIs('admin')">
-                            <span
-                                class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">M</span>
-                            <span class="truncate">Monthly</span>
-                        </x-admin.links.nav>
-                    </li>
-                    <li>
-                        <x-admin.links.nav :href="route('admin.dashboard')" :active="request()->routeIs('admin')">
-                            <span
-                                class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600">Y</span>
-                            <span class="truncate">Yearly</span>
                         </x-admin.links.nav>
                     </li>
                 </ul>
