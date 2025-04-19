@@ -26,17 +26,22 @@ class CreateCategory extends Component
     #[Validate('required|image')]
     public $image;
 
+    #[Validate]
+    public $parent_id = null;
+
     public function save()
     {
         $this->slug = Str::slug($this->slug);
         $this->validate();
         $this->image = $this->image->store('images/category', 'public');
-        Category::create($this->only(['name', 'slug', 'description', 'image']));
+        Category::create($this->only(['name', 'slug', 'description', 'image', 'parent_id']));
         return $this->redirect('/admin/categories');
     }
 
     public function render()
     {
-        return view('livewire.categories.create-category');
+        return view('livewire.categories.create-category', [
+            'categories' => Category::where('parent_id', null)->pluck('name', 'id'),
+       ]);
     }
 }

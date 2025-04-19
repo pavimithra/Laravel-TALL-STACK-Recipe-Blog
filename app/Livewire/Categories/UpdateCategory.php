@@ -27,6 +27,8 @@ class UpdateCategory extends Component
 
     public $is_active;
 
+    public $parent_id;
+
     public function mount(Category $category)
     {
         $this->category = $category;
@@ -34,6 +36,7 @@ class UpdateCategory extends Component
         $this->slug = $category->slug;
         $this->is_active = $category->is_active;
         $this->description = $category->description;
+        $this->parent_id = $category->parent_id;
     }
 
     public function rules()
@@ -50,12 +53,16 @@ class UpdateCategory extends Component
             'description' => 'required|min:5',
             'is_active' => 'boolean',
             'image' => 'nullable|image',
+            'parent_id' => 'nullable',
         ];
     }
 
     public function update()
     {
         $this->slug = Str::slug($this->slug);
+
+        if(!$this->parent_id)
+            $this->parent_id = null;
             
         $this->validate();
 
@@ -67,13 +74,14 @@ class UpdateCategory extends Component
         } else {
             $this->image = $this->category->image;
         }
-        
+
         $this->category->update([
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
             'image' => $this->image,
             'is_active' => $this->is_active,
+            'parent_id' => $this->parent_id,
         ]);
         
         return $this->redirect('/admin/categories');
@@ -81,6 +89,8 @@ class UpdateCategory extends Component
 
     public function render()
     {
-        return view('livewire.categories.update-category');
+        return view('livewire.categories.update-category', [
+            'categories' => Category::where('parent_id', null)->pluck('name', 'id'),
+       ]);
     }
 }

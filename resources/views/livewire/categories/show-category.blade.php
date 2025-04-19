@@ -28,6 +28,12 @@
                 </div>
             </div>
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-4">
+                <x-admin.forms.label for="parent_id" :value="__('Parent Category')" />
+                <div class="sm:col-span-2 sm:mt-0 text-gray-900 dark:text-gray-200">
+                    {{ $category->category->name }}
+                </div>
+            </div>
+            <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-4">
                 <x-admin.forms.label for="is_active" :value="__('Is Active')" />
                 <div class="sm:col-span-2 sm:mt-0 text-gray-900 dark:text-gray-200">
                     <x-admin.span-status :status="$category->is_active">

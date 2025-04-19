@@ -30,6 +30,19 @@
                 @error('slug') <x-admin.forms.error :messages="$message" class="mt-2" /> @enderror
             </div>
 
+            <div class="sm:col-start-1 sm:col-span-3 xl:col-start-1 xl:col-span-2">
+                <x-admin.forms.label for="parent_id" :value="__('Add Parent Category')" />
+                <div class="mt-2">
+                    <select wire:model="parent_id" name="parent_id" id="categories" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-white/5 dark:text-white dark:ring-white/10 dark:focus:ring-indigo-500">
+                        <option value="">Select Category</option>
+                        @foreach ($categories as $id => $category)
+                            <option value="{{ $id }}"> {{ $category }}  </option>
+                        @endforeach
+                    </select>
+                </div>
+                @error('parent_id') <x-admin.forms.error :messages="$message" class="mt-2" /> @enderror
+            </div>
+
             <div class="col-span-full">
                 <x-admin.forms.label for="description" :value="__('Description')" />
                 <div class="mt-2">

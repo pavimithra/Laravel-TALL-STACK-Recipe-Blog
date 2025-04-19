@@ -41,7 +41,7 @@
                         </div>
 
                         <!-- Sidebar component, swap this element with another sidebar if you like -->
-                        @include('layouts.admin.navigation')
+                        @include('layouts.admin-navigation')
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
             <!-- Static sidebar for desktop -->
             <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
                 <!-- Sidebar component, swap this element with another sidebar if you like -->
-                @include('layouts.admin.navigation')
+                @include('layouts.admin-navigation')
             </div>
 
             <div class="lg:pl-72">
@@ -69,7 +69,7 @@
 
                     <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6 items-center">
                         <div class="relative flex flex-1 items-center">
-                            <form action="#" method="GET" class="w-full lg:w-3/5">
+                            <!-- <form action="#" method="GET" class="w-full lg:w-3/5">
                                 <label for="search-field" class="sr-only">Search</label>
                                 <div class="relative rounded-md shadow-sm">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -82,7 +82,7 @@
                                     </div>
                                     <input type="search" name="search" id="search" class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-white/5 dark:text-white dark:ring-white/10 dark:focus:ring-indigo-500" placeholder="Search...">
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                         <div class="flex items-center gap-x-4 lg:gap-x-6">
                             <!-- <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">

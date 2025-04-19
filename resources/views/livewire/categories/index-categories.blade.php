@@ -21,7 +21,7 @@
                 <option value="15">15</option>
                 <option value="20">20</option>
                 <option value="25">25</option>
-            </select>            
+            </select>
         </div>
     </div>
     <div class="mt-8 flow-root">
